@@ -22,8 +22,10 @@ router.get('/:activity_id', function(req, res, next) {
 /* POST route */
 // post comment to activity
 router.post('/:activity_id', function(req, res, next) {
-    console.log(req.body);
-    createComment(req.body.userId, req.params.activity_id, req.user.blocked, req.body.comment, function(comments){
+    //TODO: replace empty array with req.user.blocked, empty array is for test purposes
+    var blockedIds = [];
+
+    createComment(req.body.userId, req.params.activity_id, blockedIds, req.body.comment, function(comments){
         res.json(comments);
     });
 });
