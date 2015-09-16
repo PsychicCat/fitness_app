@@ -13,7 +13,7 @@ router.get('/activities', function(req, res, next) {
         Activities.find({user_id: currentUser._id}, function (err, activities) {
 
             console.log(activities);
-            res.jason({currentUser: currentUser}, {activities: activities});
+            res.json({currentUser: currentUser}, {activities: activities});
 
             if (err)
                 next(err);

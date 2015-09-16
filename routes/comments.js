@@ -23,8 +23,9 @@ router.get('/:activity_id', function(req, res, next) {
 // post comment to activity
 router.post('/:activity_id', function(req, res, next) {
     console.log(req.body);
-    createComment(req.body.userId, req.params.activity_id, req.body.comment);
-    res.sendStatus(200);
+    createComment(req.body.userId, req.params.activity_id, req.user.blocked, req.body.comment, function(comments){
+        res.json(comments);
+    });
 });
 
 /* DELETE route */
