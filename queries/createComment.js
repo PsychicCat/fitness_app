@@ -10,7 +10,7 @@ var createComment = function(userId, activityId, blockedIDs, comment, callback){
         }
     });
 
-    Comments.find({activity_id: activityId}, user_id: { "$nin" : blockedIDs }, function(err, comments){
+    Comments.find({activity_id: activityId, user_id: { "$nin" : blockedIDs } }, function(err, comments){
         callback(comments);
     })
 };
